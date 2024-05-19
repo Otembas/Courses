@@ -2,6 +2,7 @@ import { getMenu } from '@/api/menu';
 import { getPage } from '@/api/page';
 import { getProducts } from '@/api/product';
 import { firstLevelMenu } from '@/helpers/helpers';
+import { TopPageComponent } from '@/page-components';
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -20,25 +21,30 @@ export async function generateStaticParams() {
     }
     paths.push(
       ...menu.flatMap((m) =>
-        m.pages.map((p) => ({ category: menuLoad.id, product: p.alias }))
+        m.pages.map((p) => ({ category: menuLoad.route, product: p.alias }))
       )
     );
   }
   return paths;
 }
 
-export default async function Courses({
+export default async function TopPage({
   params,
 }: {
-  params: { category: string; product: string };
+  params: { category: string; alias: string };
 }) {
   const firstCategoryItem = firstLevelMenu.find(
     (m) => m.route == params.category
   );
+
   if (!firstCategoryItem) {
     notFound();
   }
-  const page = await getPage(params.product);
+
+  console.log(params);
+  
+
+  const page = await getPage(params.alias);
   if (!page) {
     notFound();
   }
@@ -46,10 +52,5 @@ export default async function Courses({
   if (!products) {
     notFound();
   }
-  return (
-    <>
-      <div>{page.category}</div>
-      <div>{products && products.length}</div>
-    </>
-  );
+  return <TopPageComponent firstCategory={firstCategoryItem.id} page={page} products={products}/>
 }

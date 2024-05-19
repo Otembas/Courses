@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
-import './globals.css';
+
 //import styles from './page.module.css';
-//import { Layout } from '@/layout/Layout';
+import { Layout } from '@/layout/Layout';
 
 const inter = Noto_Sans({
   subsets: ['latin'],
@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Layout>{children} </Layout>
+      </body>
     </html>
   );
 }

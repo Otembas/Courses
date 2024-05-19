@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import { MenuFirstLevel } from './MenuFirstLevel/menu-first-level';
-import { firstLevelMenu } from '@/helpers/helpers';
+
 
 export async function Menu(): Promise<JSX.Element> {
   const firstCategory = TopLevelCategory.Courses;
@@ -16,23 +16,6 @@ export async function Menu(): Promise<JSX.Element> {
   if (!menu0 || !menu1 || !menu2 || !menu3) {
     notFound();
   }
-
-    const paths = [];
-
-    for (const menuLoad of firstLevelMenu) {
-      const menu = await getMenu(menuLoad.id);
-      if (!menu) {
-        notFound();
-      }
-      paths.push(
-        ...menu.flatMap((m) => m.pages.map((p) => `/${menuLoad.route}/${p.alias}`))
-      );
-    }
-  
-
-  console.log(
-    paths
-  );
 
   return (
     <MenuFirstLevel

@@ -11,6 +11,13 @@ export interface ReviewModel {
   rating: number;
   createdAt: Date;
 }
+
+export interface Advantages {
+  title: string;
+  description: string;
+  _id: string;
+}
+
 export interface ProductModel {
   _id: string;
   categories: string[];
@@ -30,5 +37,7 @@ export interface ProductModel {
   reviews: ReviewModel[];
   reviewCount: number;
   reviewAvg?: number;
-  advatages: string;
+  advantages?: string;
+  disadvantages?: string;
 }
+

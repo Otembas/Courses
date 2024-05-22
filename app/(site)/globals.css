@@ -5,9 +5,11 @@
   --primary: #7653fc;
   --primary-hover: #6344df;
   --red: #fc836d;
+  --red-light: #f4e2df;
   --green: #1dc37e;
   --green-light: #c8f8e4;
   --gray-dark: #787d85;
+  --gray: #a4a4a4;
 }
 
 * {

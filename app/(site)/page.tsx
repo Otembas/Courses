@@ -2,7 +2,10 @@
 //import { Htag, Button, Paragraph, Tag, Rating } from '@/components';
 // import { getMenu } from '@/api/menu';
 // import { MenuItem } from '@/interfaces/menu.interface';
+import { Search, Textarea } from '@/components';
+import { Input } from '@/components/Input/Input';
 import { Metadata } from 'next';
+
 //import styles from './page.module.css';
 
 // export const metadata: Metadata = {
@@ -16,5 +19,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  return <>Главная Страница</>;
+  return (
+    <>
+      Главная Страница
+      <Input placeholder='test' />
+      <Textarea placeholder='test' />
+      <Search />
+    </>
+  );
 }

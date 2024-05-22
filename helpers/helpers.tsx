@@ -33,7 +33,30 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 
 export const priceRuIntl = (price: number): string =>
   new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: 'RUB',
-      minimumFractionDigits: 0,
+    style: 'currency',
+    currency: 'RUB',
+    minimumFractionDigits: 0,
   }).format(price);
+
+export const declOfNum = (
+  number: number,
+  titles: [string, string, string]
+): string => {
+  const cases = [2, 0, 1, 1, 1, 2];
+  return titles[
+    number % 100 > 4 && number % 100 < 20
+      ? 2
+      : cases[number % 10 < 5 ? number % 10 : 5]
+  ];
+};
+
+export const getDateRuLocal = (date: Date | string) => {
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+  return new Intl.DateTimeFormat('ru-Ru', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
+};

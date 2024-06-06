@@ -1,1 +1,1 @@
-## Fix bugs and improve design
+## Add new features and expand API

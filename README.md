@@ -1,1 +1,1 @@
-## Adapt system for new hardware platform and optimize performance
+## Adapt system for new hardware platform and optimize performance!

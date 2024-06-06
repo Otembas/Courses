@@ -1,1 +1,1 @@
-## Add new features and expand API
+## Adapt system for new hardware platform and optimize performance
